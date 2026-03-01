@@ -1,0 +1,9 @@
+{% extends "page.html" %}
+
+{% set user = user_dict %}
+
+{% block page %}
+<script>
+  window.location.href = "/user/{{ user.name }}";
+</script>
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _('About') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active">{% link_for _('About'), named_route='home.about' %}</li>
+{% endblock %}
+
+{% block primary %}
+  <article class="module" role="main">
+      <div class="module-content">
+          {% block about %}
+
+          <h1 class="page-heading">Sobre GUÍA</h1>
+
+          <p style="text-align:justify;">
+              En el entorno universitario actual, la gestión de la documentación académica se enfrenta a importantes retos derivados de la falta de estandarización, la diversidad terminológica y el uso exclusivo de formatos no estructurados (como PDF). Esta situación dificulta el acceso, la reutilización y el análisis automatizado de información clave para la toma de decisiones, la evaluación de la calidad y la interoperabilidad entre instituciones.
+          </p>
+
+          <p style="text-align:justify;">
+              Pese a los esfuerzos por promover la transparencia y la apertura (como el EEES y otras iniciativas europeas), las universidades carecen de herramientas eficaces que permitan estructurar, analizar y compartir su documentación de forma inteligente y automatizada.
+          </p>
+
+          <h3 style="margin-top:40px; letter-spacing:2px; color:#a0522d;">
+              ¿QUÉ PROPONEMOS?
+          </h3>
+
+          <p style="text-align:justify;">
+              El proyecto GUÍA propone el desarrollo de una <strong>plataforma e infraestructura</strong> que permita recopilar, estructurar y reutilizar la documentación universitaria, tales como guías docentes y memorias de verificación. Mediante el uso de <strong>Inteligencia Artificial (IA)</strong> y <strong>tecnologías semánticas</strong>, GUÍA convertirá esta documentación en recursos accesibles, interoperables y reutilizables, facilitando así entre otros:
+          </p>
+
+          <ul>
+              <li><strong>La búsqueda y comparación objetiva</strong> entre asignaturas y títulos universitarios.</li>
+              <li><strong>El análisis automático</strong> de alineación entre competencias y contenidos formativos.</li>
+              <li><strong>La automatización</strong> de procesos de reconocimiento académico y planificación de nuevas titulaciones.</li>
+              <li><strong>La verificación</strong> de sellos e índices de calidad.</li>
+          </ul>
+
+          <div style="text-align:center; margin-top:40px;">
+              <img src="{{ h.url_for_static('/base/images/fotoAbout1.png') }}"
+                   style="max-width:65%; height:auto; border-radius:8px; box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+              <p style="font-size:13px; margin-top:12px; color:#666;">
+                  Ilustración 1 – Arquitectura ilustrativa de GUÍA
+              </p>
+          </div>
+
+          <hr style="margin:70px 0 50px 0;">
+
+          <h2 style="letter-spacing:2px; color:#a0522d;">
+              OBJETIVOS PRINCIPALES
+          </h2>
+
+          <ol style="margin-top:25px;">
+              <li><strong>Investigar y comprender</strong> las problemáticas actuales relacionadas con el acceso y la estructura de la documentación universitaria.</li>
+              <li><strong>Desarrollar GUÍA</strong>, una plataforma que actúe como repositorio central y punto de acceso a la documentación enriquecida y estructurada.</li>
+              <li><strong>Impulsar servicios basados en IA</strong>, como asistentes de consulta en lenguaje natural o buscadores multilingües por conceptos.</li>
+              <li><strong>Promover una red de colaboración</strong> entre universidades y entidades reguladoras que facilite la estandarización y el consenso institucional.</li>
+          </ol>
+
+          <hr style="margin:70px 0 50px 0;">
+
+          <h2 style="letter-spacing:2px; color:#a0522d;">
+              IMPACTO ESPERADO
+          </h2>
+
+          <ul style="margin-top:25px;">
+              <li><strong>Transformación digital</strong> de los procesos universitarios de gestión y calidad.</li>
+              <li><strong>Promover y proponer buenas prácticas</strong> para la gestión documental universitaria.</li>
+              <li><strong>Modernización de la gestión académica</strong>, gracias a la interoperabilidad documental y el uso de inteligencia artificial.</li>
+              <li><strong>Mejora de la transparencia y trazabilidad documental</strong>, alineada con los principios FAIR y la ciencia abierta.</li>
+              <li><strong>Escalabilidad futura</strong> hacia otras universidades de Madrid o de otras regiones y/o países, así como a otros niveles educativos (secundaria).</li>
+          </ul>
+
+          {% endblock %}
+      </div>
+  </article>
+{% endblock %}
+
+{% block secondary %}{% endblock %}

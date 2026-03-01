@@ -1,0 +1,81 @@
+{% set intro = g.site_intro_text %}
+
+<div class="module-promotion card box"
+     style="
+     width: 100vw;
+     margin-left: calc(50% - 50vw);
+     margin-right: calc(50% - 50vw);
+     padding: 0;
+     border: none;
+     position: relative;
+     background: none;
+     box-shadow: none;
+     margin: 0;
+">
+
+    <section class="featured media-overlay hidden-xs"
+             style="
+                position: relative;
+                height: 600px;
+                overflow: hidden;
+             ">
+
+        <img class="img-fluid"
+             src="{{ h.url_for_static('/base/images/placeholder.png') }}"
+             alt="Placeholder"
+             style="
+                 width: 100%;
+                 height: 100%;
+                 object-fit: cover;
+             " />
+
+        <div style="
+            position: absolute;
+            top: 110px;
+            right: calc((100% - 1170px)/2 + 15px);
+            width: 520px;
+            color: white;
+            text-align: left;
+        ">
+
+            <h1 style="
+                font-size: 2.2em;
+                font-weight: 700;
+                margin-bottom: 20px;
+                text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+            ">
+                What is Lorem Ipsum?
+            </h1>
+
+            <p style="
+                font-size: 0.95em;
+                line-height: 1.7;
+                text-align: justify;
+                margin-bottom: 35px;
+            ">
+                <strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                It has survived not only five centuries, but also the leap into electronic typesetting,
+                remaining essentially unchanged.
+
+                <br><br>
+
+                It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </p>
+
+            <a href="/about"
+               class="btn btn-light"
+               style="
+                   padding: 10px 30px;
+                   font-weight: 600;
+               ">
+                Participar
+            </a>
+
+        </div>
+
+    </section>
+
+</div>
