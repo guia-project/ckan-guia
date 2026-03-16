@@ -13085,7 +13085,6 @@ td.diff_header {
   align-items: center;
 }
 
-
 .homepage,
 .homepage .hero,
 .homepage .module-search,
@@ -13120,6 +13119,7 @@ body {
     border: none !important;
     box-shadow: none !important;
 }
+
 /* FORCE REMOVE RIGHT EMPTY SPACE ON ORGANIZATION PAGE */
 .row.wrapper.no-nav {
     display: block !important;
@@ -13130,3 +13130,47 @@ body {
         max-width: 100% !important;
         flex: none !important;
     }
+/* REDUCE HEADER HEIGHT */
+.masthead {
+    padding: 4px 0 !important;
+}
+
+.masthead .navbar {
+    padding: 0 !important;
+}
+
+.masthead .container {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* hide skip link */
+.visually-hidden-focusable {
+  display: none !important;
+}
+
+/* Quitar espacio debajo */
+
+html, body {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.main {
+    flex: 1;
+}
+
+
+.site-footer {
+    margin-top: auto;
+}
+/* quitar lista de organizaciones en tags*/
+.homepage .group-list.module {
+    display: none;
+}

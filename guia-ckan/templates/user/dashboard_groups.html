@@ -1,3 +1,11 @@
+
+{% extends "page.html" %}
+
+{% block content %}
+<meta http-equiv="refresh" content="0; url=/dashboard/datasets/" />
+{% endblock %}
+
+{#
 {% extends "user/dashboard.html" %}
 
 {% set group_type = h.default_group_type('group') %}
@@ -18,7 +26,7 @@
       {% snippet "group/snippets/group_list.html", groups=groups, show_capacity=True %}
     </div>
   {% else %}
-    <p class="empty">
+    <p class="empty"> 
       {{ h.humanize_entity_type('group', group_type, 'you not member') or _('You are not a member of any groups.') }}
       {% if h.check_access('group_create') %}
         {% link_for _('Create one now?'), named_route=group_type ~ '.new' %}
@@ -26,3 +34,4 @@
     </p>
   {% endif %}
 {% endblock %}
+#}

@@ -1,4 +1,4 @@
-{% set tags = h.get_facet_items_dict('tags', search_facets, limit=3) %}
+{% set tags = h.get_facet_items_dict('tags', search_facets, limit=6) %}
 {% set placeholder = _('E.g. Fundamento De Computadores') %}
 {% set dataset_type = h.default_package_type() %}
 
@@ -38,10 +38,8 @@
         </div>
     </form>
 
- 
-
     <div class="tags"
-         style="background:none;
+        style="background:none;
                 padding:25px 0;
                 border:none;">
 
@@ -50,19 +48,19 @@
         </h3>
 
         {% for tag in tags %}
-        <a class="tag"
-           href="{% url_for 'dataset.search', tags=tag.name %}"
-           title="{{ tag.display_name }}"
-           style="display:inline-block;
-                  margin:6px;
-                  padding:6px 16px;
-                  border:2px solid #0b4f5c;
-                  color:#206b82;
-                  border-radius:25px;
-                  text-decoration:none;
-                  background:none;">
-            {{ tag.display_name|truncate(22) }}
-        </a>
+            <a class="tag"
+                href="{% url_for 'dataset.search', tags=tag.name %}"
+                title="{{ tag.display_name }}"
+                style="display:inline-block;
+                        margin:6px;
+                        padding:6px 16px;
+                        border:2px solid #0b4f5c;
+                        color:#206b82;
+                        border-radius:25px;
+                        text-decoration:none;
+                        background:none;">
+                 {{ tag.display_name|truncate(22) }}
+            </a>
         {% endfor %}
 
     </div>
