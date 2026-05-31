@@ -52,8 +52,10 @@ def get_datasets():
 
 datasets = list(get_datasets())
 
-logger.info(f"Datasets encontrados en la organización '{ORG}': {len(datasets)}")
-
+logger.info(
+    f"Datasets encontrados en la organización "
+    f"'{ORG}': {len(datasets)}"
+)
 
 for dataset_id in datasets:
 

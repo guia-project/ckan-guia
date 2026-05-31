@@ -2,12 +2,13 @@
 # -*- coding: utf-8 -*-
 
 """
-Importa filas de un CSV a CKAN registrando la URL de un PDF como recurso remoto.
+Importa filas de un CSV a CKAN registrando la URL de un PDF como recurso 
+remoto.
 
 Requisitos:
     pip install ckanapi
 
-Uso:
+Ejemplo de Uso:
     python import_gauss_to_ckan.py \
         --csv gauss_index_old.csv \
         --ckan-url https://tu-ckan.ejemplo \
@@ -86,26 +87,40 @@ def slugify(text: str, max_length: int = 100) -> str:
 
 
 def dataset_name_from_row(row: Dict[str, str]) -> str:
-    raw = f"{row.get('academic_year','')}-{row.get('semester','')}-{row.get('study_plan_code','')}-{row.get('subject_code','')}-{row.get('subject_name','')}"
+    raw = (
+    f"{row.get('academic_year', '')}-"
+    f"{row.get('semester', '')}-"
+    f"{row.get('study_plan_code', '')}-"
+    f"{row.get('subject_code', '')}-"
+    f"{row.get('subject_name', '')}"
+)
     return slugify(raw, max_length=100)
 
 
 def dataset_title_from_row(row: Dict[str, str]) -> str:
-    return f"{row.get('subject_name','').strip()} [{row.get('subject_code','').strip()}] - {row.get('academic_year','').strip()} {row.get('semester','').strip()}"
-
+    return (
+    f"{row.get('subject_name', '').strip()} "
+    f"[{row.get('subject_code', '').strip()}] - "
+    f"{row.get('academic_year', '').strip()} "
+    f"{row.get('semester', '').strip()}"
+)
 
 def build_notes(row: Dict[str, str]) -> str:
+    subject_name = row.get('subject_name', '').strip()
+
     lines = [
-        f"Guía docente de la asignatura {row.get('subject_name','').strip()}",
+        f"Guía docente de la asignatura "
+        f"{subject_name}",
         "",
-        f"Año académico: {row.get('academic_year','').strip()}",
-        f"Semestre: {row.get('semester','').strip()}",
-        f"Plan: {row.get('study_plan_name','').strip()}",
-        f"Código de plan: {row.get('study_plan_code','').strip()}",
-        f"Tipo de plan: {row.get('study_plan_type','').strip()}",
-        f"Tipo de asignatura: {row.get('subject_type','').strip()}",
-        f"Código de asignatura: {row.get('subject_code','').strip()}",
+        f"Año académico: {row.get('academic_year', '').strip()}",
+        f"Semestre: {row.get('semester', '').strip()}",
+        f"Plan: {row.get('study_plan_name', '').strip()}",
+        f"Código de plan: {row.get('study_plan_code', '').strip()}",
+        f"Tipo de plan: {row.get('study_plan_type', '').strip()}",
+        f"Tipo de asignatura: {row.get('subject_type', '').strip()}",
+        f"Código de asignatura: {row.get('subject_code', '').strip()}",
     ]
+
     return "\n".join(lines)
 
 
@@ -144,10 +159,14 @@ def build_tags(row: Dict[str, str]) -> List[Dict[str, str]]:
     return tags
 
 
-def resource_already_exists(resources: List[Dict[str, Any]], pdf_url: str) -> bool:
+def resource_already_exists(
+    resources: List[Dict[str, Any]],
+    pdf_url: str
+) -> bool:
     for resource in resources or []:
-        if resource.get("url","").strip() == pdf_url.strip():
+        if resource.get("url", "").strip() == pdf_url.strip():
             return True
+
     return False
 
 
@@ -264,7 +283,11 @@ def process_csv(
 
     logger.info(f"Inicio import CSV: {csv_path}")
 
-    ckan = RemoteCKAN(ckan_url, apikey=api_key, user_agent="gauss-importer/1.0")
+    ckan = RemoteCKAN(
+    ckan_url,
+    apikey=api_key,
+    user_agent="gauss-importer/1.0"
+)
 
     with open(csv_path, "r", encoding="utf-8", newline="") as f:
 
@@ -315,14 +338,49 @@ def process_csv(
 def parse_args() -> argparse.Namespace:
 
     parser = argparse.ArgumentParser(
-        description="Importa URLs de PDFs desde CSV a CKAN como recursos remotos."
+        description=(
+            "Importa URLs de PDFs desde CSV "
+            "a CKAN como recursos remotos."
+        )
     )
-    parser.add_argument("--csv", required=True, help="Ruta al CSV")
-    parser.add_argument("--ckan-url", required=True, help="URL base de CKAN")
-    parser.add_argument("--api-key", required=True, help="API token de CKAN")
-    parser.add_argument("--owner-org", required=True, help="ID o nombre de la organización CKAN")
-    parser.add_argument("--license-id", default=None, help="license_id opcional de CKAN")
-    parser.add_argument("--limit", type=int, default=None, help="Número máximo de filas a procesar")
+
+    parser.add_argument(
+        "--csv",
+        required=True,
+        help="Ruta al CSV"
+    )
+
+    parser.add_argument(
+        "--ckan-url",
+        required=True,
+        help="URL base de CKAN"
+    )
+
+    parser.add_argument(
+        "--api-key",
+        required=True,
+        help="API token de CKAN"
+    )
+
+    parser.add_argument(
+        "--owner-org",
+        required=True,
+        help="ID o nombre de la organización CKAN"
+    )
+
+    parser.add_argument(
+        "--license-id",
+        default=None,
+        help="license_id opcional de CKAN"
+    )
+
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=None,
+        help="Número máximo de filas a procesar"
+    )
+
     return parser.parse_args()
 
 
